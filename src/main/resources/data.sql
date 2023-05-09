@@ -1,0 +1,10 @@
+insert into book (author, title, isbn, data_wypozyczenia, return_date, price_per_day_over30) values ('Wilcot', 'Human Desire', '820709836-8', null, null, 5);
+insert into book (author, title, isbn, data_wypozyczenia, return_date, price_per_day_over30) values ('Obispo', 'Smash His Camera', '341043694-4', null, null, 5);
+insert into book (author, title, isbn, data_wypozyczenia, return_date, price_per_day_over30) values ('O''Connell', 'So Young (Zhi wo men zhong jiang shi qu de qing chun)', '809264966-9', null, null, 5);
+insert into book (author, title, isbn, data_wypozyczenia, return_date, price_per_day_over30) values ('O''Glassane', 'Wishmaster 3: Beyond the Gates of Hell', '417669831-4', null, null, 5);
+insert into book (author, title, isbn, data_wypozyczenia, return_date, price_per_day_over30) values ('Moggle', 'ChubbChubbs!, The', '063961467-1', null, null, 5);
+insert into book (author, title, isbn, data_wypozyczenia, return_date, price_per_day_over30) values ('Niset', 'Mabel''s Married Life', '911441253-5', null, null, 5);
+insert into book (author, title, isbn, data_wypozyczenia, return_date, price_per_day_over30) values ('Trusler', '3 Backyards', '607259714-9', null, null, 5);
+insert into book (author, title, isbn, data_wypozyczenia, return_date, price_per_day_over30) values ('Felgate', 'Courage Mountain', '853424848-6', null, null, 5);
+insert into book (author, title, isbn, data_wypozyczenia, return_date, price_per_day_over30) values ('Bagster', '9th Company', '987155163-0', '2023-05-01', null, 5);
+insert into book (author, title, isbn, data_wypozyczenia, return_date, price_per_day_over30) values ('Dunkinson', 'Friends of God: A Road Trip with Alexandra Pelosi', '348005189-8', null, null, 5);
