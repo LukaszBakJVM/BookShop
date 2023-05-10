@@ -19,6 +19,7 @@ public class PersonsServices {
     }
     PersonDto save(PersonDto dto){
         Person map = personMapper.map(dto);
+        addressRepository.save(map.getAddress());
         Person save = personRepository.save(map);
         return personMapper.map(save);
     }

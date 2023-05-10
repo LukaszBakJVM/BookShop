@@ -27,8 +27,8 @@ public class Person {
     @NotNull
     @Email
     private String email;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "addres_id")
+    @OneToOne()
+    //@JoinColumn(name = "addres_id")
 
     private Address address;
 
