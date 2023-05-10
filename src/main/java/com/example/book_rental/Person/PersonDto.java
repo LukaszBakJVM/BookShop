@@ -1,39 +1,20 @@
 package com.example.book_rental.Person;
 
-import com.example.book_rental.Person.Address.Address;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.pl.PESEL;
 
-
-import java.util.Objects;
-
-@Entity
-public class Person {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class PersonDto {
     private long id;
-    @NotNull
-    @Size(min = 2)
     private String firstName;
-    @NotNull
-    @Size(min = 2)
     private String lastName;
-    @NotNull
-    @PESEL
     private String pesel;
-    @NotNull
-    @Email
     private String email;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "addres_id")
-
-    private Address address;
-
-    public Person() {
-    }
+    private long addressId;
+    private String city;
+    private String street;
+    private String houseNumber;
 
     public long getId() {
         return id;
@@ -75,24 +56,35 @@ public class Person {
         this.email = email;
     }
 
-    public Address getAddress() {
-        return address;
+    public long getAddressId() {
+        return addressId;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setAddressId(long addressId) {
+        this.addressId = addressId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return firstName.equals(person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(pesel, person.pesel) && Objects.equals(email, person.email);
+    public String getCity() {
+        return city;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(firstName, lastName, pesel, email);
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getHouseNumber() {
+        return houseNumber;
+    }
+
+    public void setHouseNumber(String houseNumber) {
+        this.houseNumber = houseNumber;
     }
 }
