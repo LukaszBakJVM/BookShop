@@ -1,7 +1,9 @@
 package com.example.book_rental.Person;
 
+import com.example.book_rental.Exepction.PersonException;
 import com.example.book_rental.Person.Address.AddressRepository;
 import org.springframework.stereotype.Service;
+
 
 import java.util.Optional;
 
@@ -18,6 +20,10 @@ public class PersonsServices {
         this.personMapper = personMapper;
     }
     PersonDto save(PersonDto dto){
+        Optional<Person> byEmail = personRepository.findByEmail(dto.getEmail());
+        byEmail.ifPresent(p->{throw new PersonException("Taki email jest juz zapisany w bazie "
+                +dto.getEmail());
+        });
         Person map = personMapper.map(dto);
         addressRepository.save(map.getAddress());
         Person save = personRepository.save(map);

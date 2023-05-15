@@ -1,13 +1,17 @@
 package com.example.book_rental.Person;
 
+import com.example.book_rental.Book.Book;
+
 import com.example.book_rental.Person.Address.Address;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.UniqueElements;
 import org.hibernate.validator.constraints.pl.PESEL;
 
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -26,11 +30,14 @@ public class Person {
     private String pesel;
     @NotNull
     @Email
+    @Column(unique = true)
     private String email;
-    @OneToOne()
-    //@JoinColumn(name = "addres_id")
+    @OneToOne
+
 
     private Address address;
+    @OneToMany(mappedBy = "person")
+    private List<Book>books;
 
     public Person() {
     }
@@ -81,6 +88,14 @@ public class Person {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
     @Override

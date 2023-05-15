@@ -1,5 +1,6 @@
 package com.example.book_rental.Book;
 
+import com.example.book_rental.Person.Person;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -33,7 +34,8 @@ public class Book {
     private LocalDate localDate;
     private LocalDate returnDate;
     private final double pricePerDayOver30 =5;
-
+@ManyToOne
+private Person person;
 
 
 
@@ -94,6 +96,14 @@ public class Book {
 
     public double getPricePerDayOver30() {
         return pricePerDayOver30;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
     @Override

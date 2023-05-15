@@ -19,11 +19,11 @@ public class Address {
     @NotNull
 
     private String houseNumber;
-    @OneToOne
+  //  @OneToOne
     //@JoinColumn(name = "idklienta",in)
 
 
-    private Person person;
+  //  private Person person;
 
     public Address() {
     }
@@ -60,11 +60,11 @@ public class Address {
         this.houseNumber = houseNumber;
     }
 
-    public Person getPerson() {
+  /*  public Person getPerson() {
         return person;
     }
 
-    public void setPerson(Person person) {
+   public void setPerson(Person person) {
         this.person = person;
-    }
+    }*/
 }
