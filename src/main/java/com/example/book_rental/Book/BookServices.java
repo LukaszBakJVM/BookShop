@@ -36,10 +36,15 @@ public class BookServices {
         Book book = repository.findById(id).orElseThrow();
         List<Book> allByLocalDateIsNull = repository.findAllByLocalDateIsNull();
         if (!allByLocalDateIsNull.contains(book)) {
-           throw new BokException();
+            throw new BokException();
 
         } else {
             repository.deleteById(id);
         }
     }
+    public     List<BookDto>findAllBooksByPersonId(long id){
+       return repository.findAllByPersonId(id).stream().map(mapper::map)
+               .toList();
+        }
+
 }

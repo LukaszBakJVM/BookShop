@@ -7,10 +7,11 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import org.hibernate.validator.constraints.UniqueElements;
+
 import org.hibernate.validator.constraints.pl.PESEL;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -33,11 +34,9 @@ public class Person {
     @Column(unique = true)
     private String email;
     @OneToOne
-
-
     private Address address;
     @OneToMany(mappedBy = "person")
-    private List<Book>books;
+    private List<Book>books =new ArrayList<>();
 
     public Person() {
     }

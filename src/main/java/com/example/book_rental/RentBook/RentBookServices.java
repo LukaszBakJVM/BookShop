@@ -9,6 +9,8 @@ import com.example.book_rental.Person.PersonRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class RentBookServices {
@@ -25,6 +27,7 @@ public class RentBookServices {
         this.mapper = mapper;
     }
 RentBookDto rentBook(RentBookDto rentBookDto){
+    List<Book>bookList =new ArrayList<>();
     LocalDate dayOfRent =LocalDate.now();
     LocalDate dayOfReturn=dayOfRent.plusDays(30);
 
@@ -35,8 +38,12 @@ RentBookDto rentBook(RentBookDto rentBookDto){
             .orElseThrow(() -> {
                 throw new NotAvailableException();
             });
+    bookList.add(book);
+    person.setBooks(bookList);
+
     book.setLocalDate(dayOfRent);
     book.setReturnDate(dayOfReturn);
+    book.setPerson(person);
 
     rentBook.setPerson(person);
     rentBook.setBook(book);
