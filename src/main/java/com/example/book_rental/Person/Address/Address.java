@@ -1,6 +1,6 @@
 package com.example.book_rental.Person.Address;
 
-import com.example.book_rental.Person.Person;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -19,11 +19,6 @@ public class Address {
     @NotNull
 
     private String houseNumber;
-  //  @OneToOne
-    //@JoinColumn(name = "idklienta",in)
-
-
-  //  private Person person;
 
     public Address() {
     }
@@ -60,11 +55,5 @@ public class Address {
         this.houseNumber = houseNumber;
     }
 
-  /*  public Person getPerson() {
-        return person;
-    }
 
-   public void setPerson(Person person) {
-        this.person = person;
-    }*/
 }

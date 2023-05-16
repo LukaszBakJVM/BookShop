@@ -27,7 +27,7 @@ public class Person {
     @Size(min = 2)
     private String lastName;
     @NotNull
-    @PESEL
+   // @PESEL
     private String pesel;
     @NotNull
     @Email
