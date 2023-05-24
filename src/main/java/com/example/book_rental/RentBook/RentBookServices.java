@@ -7,11 +7,10 @@ import com.example.book_rental.Exepction.PersonException;
 import com.example.book_rental.Person.Person;
 import com.example.book_rental.Person.PersonRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+
 
 
 @Service
@@ -29,7 +28,7 @@ public class RentBookServices {
         this.mapper = mapper;
     }
 RentBookDto rentBook(RentBookDto rentBookDto) {
-    List<Book> bookList = new ArrayList<>();
+
     LocalDate dayOfRent = LocalDate.now();
     LocalDate dayOfReturn = dayOfRent.plusDays(30);
 
@@ -40,8 +39,6 @@ RentBookDto rentBook(RentBookDto rentBookDto) {
             .orElseThrow(() -> {
                 throw new NotAvailableException();
             });
-    bookList.add(book);
-    person.setBooks(bookList);
 
     book.setLocalDate(dayOfRent);
     book.setReturnDate(dayOfReturn);
@@ -53,7 +50,7 @@ RentBookDto rentBook(RentBookDto rentBookDto) {
     return mapper.map(save);
       }
 
-      @Transactional
+
     void endRent(String s){
 
           RentBook rentBook = rentBookRepository.findByBook_Title(s).orElseThrow();
