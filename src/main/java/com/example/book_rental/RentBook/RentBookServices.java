@@ -11,7 +11,8 @@ import org.springframework.stereotype.Service;
 
 
 import java.time.LocalDate;
-import java.time.Period;
+
+import java.time.temporal.ChronoUnit;
 
 
 @Service
@@ -60,11 +61,10 @@ RentBookDto rentBook(RentBookDto rentBookDto) {
         Book book = rentBook.getBook();
         LocalDate returnDate = book.getReturnDate();
         if (!returnDate.isAfter(localDateReturn)) {
-            Period dayOfRetard = Period.between(localDateReturn, returnDate);
+            long daysOutOfTime = ChronoUnit.DAYS.between(returnDate,localDateReturn);
 
-
-            double penalty = book.getPricePerDayOver30() * dayOfRetard.getDays();
-            System.err.println("Przekroczyłeś dni wyporzyczenia o " + dayOfRetard);
+            double penalty = book.getPricePerDayOver30() * daysOutOfTime;
+            System.err.println("Przekroczyłeś dni wyporzyczenia o " + daysOutOfTime);
             System.out.print("Kwota oplaty karnej to  " + penalty);
 
 
