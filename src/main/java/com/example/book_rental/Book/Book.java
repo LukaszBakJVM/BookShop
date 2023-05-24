@@ -4,7 +4,7 @@ import com.example.book_rental.Person.Person;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import org.hibernate.validator.constraints.ISBN;
+
 
 
 
@@ -36,6 +36,7 @@ public class Book {
     private final double pricePerDayOver30 =5;
 @ManyToOne
 private Person person;
+
 
 
 
@@ -105,6 +106,8 @@ private Person person;
     public void setPerson(Person person) {
         this.person = person;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

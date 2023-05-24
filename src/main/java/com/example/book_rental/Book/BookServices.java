@@ -1,6 +1,6 @@
 package com.example.book_rental.Book;
 
-import com.example.book_rental.Exepction.BokException;
+import com.example.book_rental.Exepction.BookException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,7 +36,7 @@ public class BookServices {
         Book book = repository.findById(id).orElseThrow();
         List<Book> allByLocalDateIsNull = repository.findAllByLocalDateIsNull();
         if (!allByLocalDateIsNull.contains(book)) {
-            throw new BokException();
+            throw new BookException();
 
         } else {
             repository.deleteById(id);

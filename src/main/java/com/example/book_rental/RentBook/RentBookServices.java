@@ -7,10 +7,12 @@ import com.example.book_rental.Exepction.PersonException;
 import com.example.book_rental.Person.Person;
 import com.example.book_rental.Person.PersonRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Service
 public class RentBookServices {
@@ -26,12 +28,12 @@ public class RentBookServices {
         this.rentBookRepository = rentBookRepository;
         this.mapper = mapper;
     }
-RentBookDto rentBook(RentBookDto rentBookDto){
-    List<Book>bookList =new ArrayList<>();
-    LocalDate dayOfRent =LocalDate.now();
-    LocalDate dayOfReturn=dayOfRent.plusDays(30);
+RentBookDto rentBook(RentBookDto rentBookDto) {
+    List<Book> bookList = new ArrayList<>();
+    LocalDate dayOfRent = LocalDate.now();
+    LocalDate dayOfReturn = dayOfRent.plusDays(30);
 
-        RentBook rentBook =new RentBook();
+    RentBook rentBook = new RentBook();
     Person person = personRepository.findById(rentBookDto.getPersonId()).orElseThrow(() ->
             new PersonException("Brak uzytkownika o id " + rentBookDto.getPersonId()));
     Book book = bookRepository.findByIdAndLocalDateIsNull(rentBookDto.getBookId())
@@ -49,8 +51,26 @@ RentBookDto rentBook(RentBookDto rentBookDto){
     rentBook.setBook(book);
     RentBook save = rentBookRepository.save(rentBook);
     return mapper.map(save);
+      }
+
+      @Transactional
+    void endRent(String s){
+
+          RentBook rentBook = rentBookRepository.findByBook_Title(s).orElseThrow();
+
+             Book book = rentBook.getBook();
+             book.setLocalDate(null);
+             book.setReturnDate(null);
+             book.setPerson(null);
+             rentBookRepository.delete(rentBook);
+
+         }
 
 
 
-}
+
+
+
+
+
 }

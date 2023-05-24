@@ -4,6 +4,8 @@ import com.example.book_rental.Book.Book;
 import com.example.book_rental.Person.Person;
 import jakarta.persistence.*;
 
+
+
 @Entity
 public class RentBook {
     @Id

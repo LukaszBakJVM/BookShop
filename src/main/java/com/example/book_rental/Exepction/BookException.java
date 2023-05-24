@@ -5,5 +5,5 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value = HttpStatus.CONFLICT, reason = "Nie można usunąc ksiazki wyporzyczonej")
 
-public class BokException extends RuntimeException{
+public class BookException extends RuntimeException{
 }

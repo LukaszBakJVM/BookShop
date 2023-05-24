@@ -13,6 +13,7 @@ public interface BookRepository extends JpaRepository<Book,Long> {
     List<Book>findAllByLocalDateIsNotNull();
     List<Book>findByPersonId(long id);
     Optional<Book>findByIdAndLocalDateIsNull(long id);
+    Optional<Book>findByIdAndLocalDateIsNotNull(long id);
     List<Book>findAllByPersonId(long id);
 
 }
