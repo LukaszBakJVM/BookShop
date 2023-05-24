@@ -9,8 +9,9 @@ import com.example.book_rental.Person.PersonRepository;
 import org.springframework.stereotype.Service;
 
 
-import java.time.LocalDate;
 
+import java.time.LocalDate;
+import java.time.Period;
 
 
 @Service
@@ -51,23 +52,30 @@ RentBookDto rentBook(RentBookDto rentBookDto) {
       }
 
 
-    void endRent(String s){
+    void endRent(String s) {
+        LocalDate localDateReturn = LocalDate.now();
 
-          RentBook rentBook = rentBookRepository.findByBook_Title(s).orElseThrow();
+        RentBook rentBook = rentBookRepository.findByBook_Title(s).orElseThrow();
 
-             Book book = rentBook.getBook();
-             book.setLocalDate(null);
-             book.setReturnDate(null);
-             book.setPerson(null);
-             rentBookRepository.delete(rentBook);
-
-         }
+        Book book = rentBook.getBook();
+        LocalDate returnDate = book.getReturnDate();
+        if (!returnDate.isAfter(localDateReturn)) {
+            Period dayOfRetard = Period.between(localDateReturn, returnDate);
 
 
+            double penalty = book.getPricePerDayOver30() * dayOfRetard.getDays();
+            System.err.println("Przekroczyłeś dni wyporzyczenia o " + dayOfRetard);
+            System.out.print("Kwota oplaty karnej to  " + penalty);
 
 
+        } else {
+            book.setLocalDate(null);
+            book.setReturnDate(null);
+            book.setPerson(null);
+            rentBookRepository.delete(rentBook);
 
 
-
+        }
+    }
 
 }
