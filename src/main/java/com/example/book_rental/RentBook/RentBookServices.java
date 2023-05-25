@@ -7,12 +7,9 @@ import com.example.book_rental.Exepction.PersonException;
 import com.example.book_rental.Person.Person;
 import com.example.book_rental.Person.PersonRepository;
 import org.springframework.stereotype.Service;
-
-
-
 import java.time.LocalDate;
 
-import java.time.temporal.ChronoUnit;
+
 
 
 @Service
@@ -54,19 +51,14 @@ RentBookDto rentBook(RentBookDto rentBookDto) {
 
 
     void endRent(String s) {
-        LocalDate localDateReturn = LocalDate.now();
+
 
         RentBook rentBook = rentBookRepository.findByBook_Title(s).orElseThrow();
 
         Book book = rentBook.getBook();
-        LocalDate returnDate = book.getReturnDate();
-        if (!returnDate.isAfter(localDateReturn)) {
-            long daysOutOfTime = ChronoUnit.DAYS.between(returnDate,localDateReturn);
-
-            double penalty = book.getPricePerDayOver30() * daysOutOfTime;
-            System.err.println("Przekroczyłeś dni wyporzyczenia o " + daysOutOfTime);
-            System.out.print("Kwota oplaty karnej to  " + penalty);
-
+        double penalty = book.getPerson().getPenalty();
+        if (penalty!=0){
+            System.err.print("Kara za opoznienie "+penalty);
 
         } else {
             book.setLocalDate(null);

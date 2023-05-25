@@ -33,6 +33,7 @@ public class Person {
     @Email
     @Column(unique = true)
     private String email;
+    private double penalty;
     @OneToOne
     private Address address;
     @OneToMany(mappedBy = "person")
@@ -79,6 +80,14 @@ public class Person {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public double getPenalty() {
+        return penalty;
+    }
+
+    public void setPenalty(double penalty) {
+        this.penalty = penalty;
     }
 
     public Address getAddress() {
