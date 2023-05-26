@@ -24,16 +24,16 @@ insert into address (city, street, house_number) values ('Chiara', 'Elmside', '9
 
 
 
-insert into person (first_name, last_name, pesel, email,address_id ) values ('Adora', 'Pesek', '2492623513', 'apesek0@marketwatch.com',1);
-insert into person (first_name, last_name, pesel, email,address_id ) values ('Aurie', 'Tantum', '3070519571', 'atantum1@fda.gov',2);
-insert into person (first_name, last_name, pesel, email,address_id ) values ('Griz', 'Kalkhoven', '8228963548', 'gkalkhoven2@slideshare.net',3);
-insert into person (first_name, last_name, pesel, email,address_id ) values ('Alyssa', 'Meriel', '6695780374', 'ameriel3@histats.com',4);
-insert into person (first_name, last_name, pesel, email,address_id ) values ('Iseabal', 'Ingleston', '2493487753', 'iingleston4@craigslist.org',5);
-insert into person (first_name, last_name, pesel, email,address_id ) values ('Duncan', 'Creber', '8873038956', 'dcreber5@twitter.com',6);
-insert into person (first_name, last_name, pesel, email,address_id ) values ('Christa', 'Magner', '7149713548', 'cmagner6@netvibes.com',7);
-insert into person (first_name, last_name, pesel, email,address_id ) values ('Jacquenetta', 'Chrismas', '6532334545', 'jchrismas7@sciencedaily.com',8);
-insert into person (first_name, last_name, pesel, email,address_id ) values ('Shelby', 'Petrishchev', '5572070726', 'spetrishchev8@topsy.com',9);
-insert into person (first_name, last_name, pesel, email,address_id ) values ('Tremayne', 'Bowsher', '4165124117', 'tbowsher9@nymag.com',10);
+insert into person (first_name, last_name, pesel, email,penalty,address_id ) values ('Adora', 'Pesek', '2492623513', 'apesek0@marketwatch.com',0,1);
+insert into person (first_name, last_name, pesel, email,penalty,address_id ) values ('Aurie', 'Tantum', '3070519571', 'atantum1@fda.gov',0,2);
+insert into person (first_name, last_name, pesel, email,penalty,address_id ) values ('Griz', 'Kalkhoven', '8228963548', 'gkalkhoven2@slideshare.net',0,3);
+insert into person (first_name, last_name, pesel, email,penalty,address_id ) values ('Alyssa', 'Meriel', '6695780374', 'ameriel3@histats.com',0,4);
+insert into person (first_name, last_name, pesel, email,penalty,address_id ) values ('Iseabal', 'Ingleston', '2493487753', 'iingleston4@craigslist.org',0,5);
+insert into person (first_name, last_name, pesel, email,penalty,address_id ) values ('Duncan', 'Creber', '8873038956', 'dcreber5@twitter.com',0,6);
+insert into person (first_name, last_name, pesel, email,penalty,address_id ) values ('Christa', 'Magner', '7149713548', 'cmagner6@netvibes.com',0,7);
+insert into person (first_name, last_name, pesel, email,penalty,address_id ) values ('Jacquenetta', 'Chrismas', '6532334545', 'jchrismas7@sciencedaily.com',0,8);
+insert into person (first_name, last_name, pesel, email,penalty,address_id ) values ('Shelby', 'Petrishchev', '5572070726', 'spetrishchev8@topsy.com',0,9);
+insert into person (first_name, last_name, pesel, email,penalty,address_id ) values ('Tremayne', 'Bowsher', '4165124117', 'tbowsher9@nymag.com',0,10);
 
 
 

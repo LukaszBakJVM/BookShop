@@ -59,6 +59,7 @@ RentBookDto rentBook(RentBookDto rentBookDto) {
         double penalty = book.getPerson().getPenalty();
         if (penalty!=0){
             System.err.print("Kara za opoznienie "+penalty);
+            //Redirected to payment
 
         } else {
             book.setLocalDate(null);
