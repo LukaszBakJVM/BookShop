@@ -1,4 +1,4 @@
-package com.example.book_rental.Penalty;
+package com.example.book_rental.PenaltyAndMailSender;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package com.example.book_rental.Penalty;
+package com.example.book_rental.PenaltyAndMailSender;
 
 import com.example.book_rental.Book.Book;
 import com.example.book_rental.Book.BookRepository;
