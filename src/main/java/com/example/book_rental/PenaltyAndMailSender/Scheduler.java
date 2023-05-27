@@ -13,12 +13,13 @@ public class Scheduler {
         this.sendMail = sendMail;
 
     }
-
-        @Scheduled(cron = "0 0/2 * 1/1 * ?")
+    //Every day at 1am
+        @Scheduled(cron = "0 0 1 * * ?")
     public void setPenalty() {
             penalty.findBookOver30days();
         }
-        @Scheduled (cron = "0 0/1 * 1/1 * ?" )
+        //Every day at 1am
+        @Scheduled (cron = "0 0 1 * * ?" )
         public void sendMail(){
              sendMail.sendMail();
 
