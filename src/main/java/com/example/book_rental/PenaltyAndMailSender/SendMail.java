@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class MailSender {
+public class SendMail {
     private final JavaMailSender mailSender;
     private final BookRepository bookRepository;
 
-    public MailSender(JavaMailSender mailSender, BookRepository bookRepository) {
+    public SendMail(JavaMailSender mailSender, BookRepository bookRepository) {
         this.mailSender = mailSender;
         this.bookRepository = bookRepository;
     }
@@ -21,12 +21,17 @@ public class MailSender {
         List<Book> rented = bookRepository.findAllByLocalDateIsNotNull();
         SimpleMailMessage mail = new SimpleMailMessage();
         StringBuilder str=new StringBuilder();
-        mail.setTo("bbzzyyczczeek@interia.pl");//recipient mail
         mail.setSubject("Ksiazki wypozyczone");
         for (Book m:rented
              ) {
+
             mail.setTo(m.getPerson().getEmail());//recipient mail
+
+
+            str.append(m.getTitle());
+            mail.setText(str.toString());
             
+            mailSender.send(mail);
         }
         
 
