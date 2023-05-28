@@ -15,11 +15,14 @@ public class Scheduler {
     }
     //Every day at 1am
         @Scheduled(cron = "0 0 1 * * ?")
+    //@Scheduled(cron = "0 * * ? * *")
     public void setPenalty() {
             penalty.findBookOver30days();
         }
         //Every day at 1am
         @Scheduled (cron = "0 0 1 * * ?" )
+
+    //@Scheduled(cron = "0 * * ? * *")
         public void sendMail(){
              sendMail.sendMail();
 
