@@ -2,14 +2,11 @@ package com.example.book_rental.PenaltyAndMailSender;
 
 import com.example.book_rental.Book.Book;
 import com.example.book_rental.Book.BookRepository;
-
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 @Service
 public class SendMail {
@@ -22,16 +19,18 @@ public class SendMail {
         this.bookRepository = bookRepository;
 
     }
+
     public void sendMail() {
-        Set<String>mailCheck=new HashSet<>();
+        String checkMail = "";
+
         List<Book> rented = bookRepository.findAllByLocalDateIsNotNull();
         SimpleMailMessage mail = new SimpleMailMessage();
         StringBuilder str = new StringBuilder();
         mail.setSubject("Ksiazki wypozyczone");
-        for (Book m : rented
-        ) {
-            if (!mailCheck.contains(m.getPerson().getEmail())) {
-                mailCheck.add(m.getPerson().getEmail());
+        for (Book m : rented) {
+
+            if (!checkMail.equals(m.getPerson().getEmail())) {
+                checkMail = m.getPerson().getEmail();
 
 
                 mail.setTo(m.getPerson().getEmail());//recipient mail
@@ -39,14 +38,19 @@ public class SendMail {
                 List<Book> allByPersonId = bookRepository.findAllByPersonId(id);
                 for (Book s : allByPersonId
                 ) {
-                    str.append(s.getTitle());
+                    str.append(s);
+                    str.append(System.lineSeparator());
+                }
+                double penalty = m.getPerson().getPenalty();
+                if (penalty != 0) {
+                    str.append(penalty);
                 }
                 mail.setText(str.toString());
-
                 mailSender.send(mail);
+                str.setLength(0);
             }
         }
     }
-}
 
+}
 

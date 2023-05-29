@@ -3,6 +3,7 @@ package com.example.book_rental.Person;
 
 import com.example.book_rental.Book.BookDto;
 import com.example.book_rental.Book.BookServices;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -22,7 +23,7 @@ public class PersonController {
     }
 
     @PostMapping
-    ResponseEntity<PersonDto> savePerson(@RequestBody PersonDto personDto) {
+    ResponseEntity<PersonDto> savePerson(@Valid @RequestBody PersonDto personDto) {
         PersonDto save = services.save(personDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(save.getId()).toUri();

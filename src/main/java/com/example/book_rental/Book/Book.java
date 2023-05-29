@@ -28,7 +28,7 @@ public class Book {
 
 
     @NotNull
-  //  @ISBN
+
     private String isbn;
     @Column(name = "data_wypozyczenia")
     private LocalDate localDate;
@@ -107,7 +107,14 @@ private Person person;
         this.person = person;
     }
 
-
+    @Override
+    public String toString() {
+        return
+                "Autor " + author +
+                "  Tytul " + title  +
+                "  data wyporzyczenia " + localDate +
+                "  data zwrotu " + returnDate;
+    }
 
     @Override
     public boolean equals(Object o) {
