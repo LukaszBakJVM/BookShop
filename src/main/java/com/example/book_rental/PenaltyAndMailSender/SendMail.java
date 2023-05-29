@@ -5,6 +5,8 @@ import com.example.book_rental.Book.BookRepository;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -42,8 +44,10 @@ public class SendMail {
                     str.append(System.lineSeparator());
                 }
                 double penalty = m.getPerson().getPenalty();
+                LocalDate localDate=LocalDate.now();
                 if (penalty != 0) {
-                    str.append(penalty);
+                    str.append("Kara za przetrzymanie ksiazek na dzien ").append(localDate);
+                    str.append(" to  ").append(penalty).append(" zl");
                 }
                 mail.setText(str.toString());
                 mailSender.send(mail);
