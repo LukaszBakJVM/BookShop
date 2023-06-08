@@ -19,7 +19,7 @@ public class PersonsServices {
         this.addressRepository = addressRepository;
         this.personMapper = personMapper;
     }
-    PersonDto save(PersonDto dto){
+ public    PersonDto save(PersonDto dto){
         Optional<Person> byEmail = personRepository.findByEmail(dto.getEmail());
         byEmail.ifPresent(p->{throw new PersonException("Taki email jest juz zapisany w bazie "
                 +dto.getEmail());

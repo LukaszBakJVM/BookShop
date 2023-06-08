@@ -13,6 +13,7 @@ public class PersonMapper {
         person.setLastName(dto.getLastName());
         person.setPesel(dto.getPesel());
         person.setEmail(dto.getEmail());
+        person.setPassword(dto.getPassword());
         address.setId(dto.getAddressId());
         address.setCity(dto.getCity());
         address.setStreet(dto.getStreet());

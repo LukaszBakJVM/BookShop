@@ -1,9 +1,6 @@
 package com.example.book_rental.Person;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-import org.hibernate.validator.constraints.pl.PESEL;
+
 
 public class PersonDto {
     private long id;
@@ -11,6 +8,7 @@ public class PersonDto {
     private String lastName;
     private String pesel;
     private String email;
+    private String password;
     private long addressId;
     private String city;
     private String street;
@@ -54,6 +52,14 @@ public class PersonDto {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public long getAddressId() {
