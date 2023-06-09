@@ -17,9 +17,8 @@ public class SecurityConfig {
 
         PathRequest.H2ConsoleRequestMatcher h2Console = PathRequest.toH2Console();
         http.formLogin().permitAll();
-        http.authorizeHttpRequests().anyRequest().permitAll();
-
-       // http.authorizeHttpRequests(requests -> requests.anyRequest().permitAll());
+        http.authorizeHttpRequests(r->r.requestMatchers("/registration").permitAll());
+        http.authorizeHttpRequests().anyRequest().authenticated();
         http.csrf(c->c.ignoringRequestMatchers(h2Console));
         http.csrf().disable();
         http.headers().frameOptions().sameOrigin();
