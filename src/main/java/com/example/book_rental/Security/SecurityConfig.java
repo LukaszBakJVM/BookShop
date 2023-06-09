@@ -17,9 +17,11 @@ public class SecurityConfig {
 
         PathRequest.H2ConsoleRequestMatcher h2Console = PathRequest.toH2Console();
         http.formLogin().permitAll();
+        http.authorizeHttpRequests().anyRequest().permitAll();
 
-        http.authorizeHttpRequests(requests -> requests.anyRequest().authenticated());
+       // http.authorizeHttpRequests(requests -> requests.anyRequest().permitAll());
         http.csrf(c->c.ignoringRequestMatchers(h2Console));
+        http.csrf().disable();
         http.headers().frameOptions().sameOrigin();
         return http.build();
     }

@@ -3,7 +3,7 @@ package com.example.book_rental.Person;
 import com.example.book_rental.Book.Book;
 
 import com.example.book_rental.Person.Address.Address;
-import com.example.book_rental.Security.Role;
+import com.example.book_rental.Security.LoginAndRegistration.Registration.Role.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;

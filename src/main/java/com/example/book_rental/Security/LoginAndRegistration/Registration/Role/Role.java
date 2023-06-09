@@ -1,4 +1,4 @@
-package com.example.book_rental.Security;
+package com.example.book_rental.Security.LoginAndRegistration.Registration.Role;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

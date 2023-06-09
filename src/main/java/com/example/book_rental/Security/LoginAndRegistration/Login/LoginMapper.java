@@ -2,7 +2,7 @@ package com.example.book_rental.Security.LoginAndRegistration.Login;
 
 import com.example.book_rental.Person.Person;
 
-import com.example.book_rental.Security.Role;
+import com.example.book_rental.Security.LoginAndRegistration.Registration.Role.Role;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
