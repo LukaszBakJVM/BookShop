@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+
 public class SecurityConfig {
 
 
@@ -17,15 +18,19 @@ public class SecurityConfig {
 
         PathRequest.H2ConsoleRequestMatcher h2Console = PathRequest.toH2Console();
         http.formLogin().permitAll();
-        http.authorizeHttpRequests(r->r.requestMatchers("/registration").permitAll());
+        http.authorizeHttpRequests(r -> r.requestMatchers("/registration").permitAll()
+                .requestMatchers("/admin/**").hasRole("Admin"));
         http.authorizeHttpRequests().anyRequest().authenticated();
-        http.csrf(c->c.ignoringRequestMatchers(h2Console));
+        http.csrf(c -> c.ignoringRequestMatchers(h2Console));
         http.csrf().disable();
         http.headers().frameOptions().sameOrigin();
         return http.build();
     }
+
     @Bean
-    PasswordEncoder passwordEncoder(){
+    PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
+
+
 }

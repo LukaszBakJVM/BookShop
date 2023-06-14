@@ -28,8 +28,8 @@ public class PersonMapper {
         person.setEmail(dto.getEmail());
         String password = passwordEncoder.encode(dto.getPassword());
         person.setPassword(password);
-        //Role role = roleRepository.findByName(USER).orElseThrow();
-       // person.getRoles().add(role);
+        Role role = roleRepository.findByName(USER).orElseThrow();
+        person.getRoles().add(role);
         address.setId(dto.getAddressId());
         address.setCity(dto.getCity());
         address.setStreet(dto.getStreet());

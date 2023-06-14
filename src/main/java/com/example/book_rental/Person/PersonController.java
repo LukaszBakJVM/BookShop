@@ -18,9 +18,9 @@ public class PersonController {
         this.bookServices = bookServices;
     }
 
-
     @GetMapping("/{id}")
-    ResponseEntity<PersonDto>findById(@PathVariable long id){
+    ResponseEntity<PersonDto>findById(
+            @PathVariable long id){
         return ResponseEntity.ok(services.getPersonById(id));
     }
     @GetMapping("/borrowed/{id}")

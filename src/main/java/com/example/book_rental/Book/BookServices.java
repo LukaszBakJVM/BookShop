@@ -15,17 +15,17 @@ public class BookServices {
         this.mapper = mapper;
     }
 
-    BookDto save(BookDto bookDto) {
+ public    BookDto save(BookDto bookDto) {
         Book map = mapper.map(bookDto);
         Book save = repository.save(map);
         return mapper.map(save);
     }
 
-        List<BookDto>allAvailableBooks(){
+    public     List<BookDto>allAvailableBooks(){
         return     repository.findAllByLocalDateIsNull()
                 .stream().map(mapper::map).toList();
           }
-          List<BookDto>allRentBooks(){
+     public      List<BookDto>allRentBooks(){
         return repository.findAllByLocalDateIsNotNull()
                 .stream().map(mapper::map).toList();
           }
