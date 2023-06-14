@@ -3,6 +3,7 @@ package com.example.book_rental.Security;
 import com.example.book_rental.Book.BookDto;
 import com.example.book_rental.Book.BookServices;
 import com.example.book_rental.Person.PersonsServices;
+import com.example.book_rental.Security.LoginAndRegistration.Registration.Role.RoleServices;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,10 +17,12 @@ import java.util.List;
 public class AdminController {
     private final BookServices bookServices;
     private final PersonsServices personsServices;
+    private final RoleServices roleServices;
 
-    public AdminController(BookServices bookServices, PersonsServices personsServices) {
+    public AdminController(BookServices bookServices, PersonsServices personsServices, RoleServices roleServices) {
         this.bookServices = bookServices;
         this.personsServices = personsServices;
+        this.roleServices = roleServices;
     }
 
 
@@ -45,5 +48,11 @@ public class AdminController {
     ResponseEntity<?>deletePersonByEmail(@PathVariable String email){
         personsServices.deletePerson(email);
         return ResponseEntity.noContent().build();
+    }
+    @PutMapping("/{email}")
+    ResponseEntity<?>addAdminRight(String email){
+        return roleServices.forAdmin(email)
+                .map(a->ResponseEntity.noContent().build())
+                .orElse(ResponseEntity.notFound().build());
     }
 }

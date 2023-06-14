@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PersonMapper {
-    private final String ADMIN = "Admin";
     private final String USER = "User";
     private final PasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository;
@@ -18,9 +17,9 @@ public class PersonMapper {
         this.roleRepository = roleRepository;
     }
 
-    public Person map(PersonDto dto){
-        Person person=new Person();
-        Address address =new Address();
+    public Person map(PersonDto dto) {
+        Person person = new Person();
+        Address address = new Address();
         person.setId(dto.getId());
         person.setFirstName(dto.getFirstName());
         person.setLastName(dto.getLastName());
@@ -38,8 +37,9 @@ public class PersonMapper {
         return person;
 
     }
-  public   PersonDto map(Person person){
-        PersonDto dto =new PersonDto();
+
+    public PersonDto map(Person person) {
+        PersonDto dto = new PersonDto();
         dto.setId(person.getId());
         dto.setFirstName(person.getFirstName());
         dto.setLastName(person.getLastName());
@@ -51,4 +51,6 @@ public class PersonMapper {
         dto.setHouseNumber(person.getAddress().getHouseNumber());
         return dto;
     }
+
+
 }
