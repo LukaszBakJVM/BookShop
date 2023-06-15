@@ -50,7 +50,7 @@ public class AdminController {
         return ResponseEntity.noContent().build();
     }
     @PutMapping("/{email}")
-    ResponseEntity<?>addAdminRight(String email){
+    ResponseEntity<?>addAdminRight(@PathVariable String email){
         return roleServices.forAdmin(email)
                 .map(a->ResponseEntity.noContent().build())
                 .orElse(ResponseEntity.notFound().build());
