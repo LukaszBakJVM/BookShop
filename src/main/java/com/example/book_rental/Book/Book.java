@@ -44,6 +44,12 @@ private Person person;
     public Book() {
     }
 
+    public Book(String author, String title, String isbn) {
+        this.author = author;
+        this.title = title;
+        this.isbn = isbn;
+    }
+
     public long getId() {
         return id;
     }
